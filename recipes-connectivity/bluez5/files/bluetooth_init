@@ -1,0 +1,33 @@
+#!/bin/sh
+
+### BEGIN INIT INFO
+# Provides:          bleutooth_init
+# Required-Start:    $bleutooth
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: bluetooth device init script
+# Description:       This file execute hciattach and rfkill unblock bluetooth at boot
+### END INIT INFO
+
+do_start() {
+    /usr/bin/hciattach /dev/ttyAMA0 bcm43xx 921600 noflow -
+    rfkill unblock bluetooth
+    echo -e 'power on\nquit' | bluetoothctl
+}
+
+case "$1" in
+  start)
+	do_start
+	;;
+  restart|reload|force-reload)
+	echo "Error: argument '$1' not supported" >&2
+	exit 3
+	;;
+  stop)
+	# No-op
+	;;
+  *)
+	echo "Usage: $0 start|stop" >&2
+	exit 3
+	;;
+esac

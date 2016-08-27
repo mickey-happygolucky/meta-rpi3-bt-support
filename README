@@ -1,0 +1,47 @@
+This README file contains information on the contents of the
+rpi3-bt-support layer.
+
+Please see the corresponding sections below for details.
+
+Summary
+============
+This layer support the initializing of bluetooth on raspberrypi3 with sysvinit.
+
+
+Dependencies
+============
+
+This layer depends on:
+
+  URI: git://git.yoctoproject.org/meta-raspberrypi
+  branch: master
+
+
+Patches
+=======
+
+Please submit any patches against the rpi3-bt-support layer to 
+the maintainer:
+
+Maintainer: Yusuke MITSUKI <mickey.happyglucky@gmail.com>
+
+
+Adding the rpi3-bt-support layer to your build
+=================================================
+
+In order to use this layer, you need to make the build system aware of
+it.
+
+Assuming the rpi3-bt-support layer exists at the top-level of your
+yocto build tree, you can add it to the build system by adding the
+location of the rpi3-bt-support layer to bblayers.conf, along with any
+other layers needed. e.g.:
+
+  BBLAYERS ?= " \
+    /path/to/yocto/meta \
+    /path/to/yocto/meta-poky \
+    /path/to/yocto/meta-yocto-bsp \
+    /path/to/yocto/meta-raspberrypi \
+    /path/to/yocto/meta-rpi3-bt-support \
+    "
+
